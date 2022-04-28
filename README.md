@@ -136,7 +136,7 @@ docker image push <user_name>/dockertestimage:latest
 
 Now we can pull this image for creating docker container!
 
-## To check: 
+**To check: **
 
 Launch a container from your newly created image
 
