@@ -61,7 +61,7 @@ wget https://www.tooplate.com/zip-templates/2121_wave_cafe.zip ; unzip 2121_wave
 So, we have the site template in /home/ec2-user/website/
 
 
-## 3. Move conf and template to one directory
+## 3. Move conf and template to my project directory
 
 Now we create a directory for handling our project and we move these 2 files (website and conf) to that directory.
 
@@ -83,17 +83,25 @@ Now we will create a file in project directory for building our custom docker im
 vim Dockerfile
 ~~~
 
-![image](https://user-images.githubusercontent.com/100773863/162553504-30dbc508-3687-4e42-a0ea-72093c0a1e50.png)
+then add,
 
-> Let's build the image, please ensure you run this command from the corect woreking directory (Project):
+~~~sh
+
+FROM httpd:alpine
+COPY ./website/ /usr/local/apache2/htdocs/
+COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
+CMD ["httpd-foreground"]
+
+~~~
+
+
+Let's build the image, 
+>  Note: Ensure the build image command is running on the correct working directory (Project):
 
 ~~~sh
 docker image build -t dockerimage:1 .
 ~~~
 
->Result
-
-![image](https://user-images.githubusercontent.com/100773863/162553606-604eabbf-adb8-4274-b058-107a25263cb7.png)
 
 
 ## 5. Pushing custom image to Docker
@@ -103,37 +111,40 @@ Now, let's add this custom docker image to our docker hub. First we need to sign
 ~~~sh
 docker login
 ~~~
->pass your credentials and you will get login succeeded message/result
+Enter your credentials and you will get a login succeeded message/result once done
 
-![image](https://user-images.githubusercontent.com/100773863/162554295-a85ae624-0a7e-441a-8f0d-31a2c19faf95.png)
+
 
 
 **We will rename the custom image (dockerimage:1) to desired one, here I rename it to:**
 
 ~~~sh
-docker image tag dockerimage:1 devanandts/dockertestimage:custom
-docker image tag devanandts/dockertestimage:custom devanandts/dockertestimage:latest
+docker image tag dockerimage:1 <user_name>/dockertestimage:custom
+docker image tag dockerimage:1 <user_name>/dockertestimage:latest
 ~~~
 
->Result
+> Note: please use your docker hub username on here <user_name>
 
-![image](https://user-images.githubusercontent.com/100773863/162554522-dba95987-9443-4b2b-8a62-22ed06915082.png)
 
 
 Now, we can push the image to docker hub
 
 ~~~sh
-docker image push devanandts/dockertestimage:custom
-docker image push devanandts/dockertestimage:latest
+docker image push <user_name>/dockertestimage:custom
+docker image push <user_name>/dockertestimage:latest
 ~~~
-
->Result
->
-![image](https://user-images.githubusercontent.com/100773863/162554612-963b1175-5b54-4577-abfa-34644ce47b34.png)
-![image](https://user-images.githubusercontent.com/100773863/162554635-716ed820-76d4-47f1-b723-dc572dc4eabe.png)
 
 Now we can pull this image for creating docker container!
 
+## To check: 
+
+Launch a container from your newly created image
+
+~~~sh
+docker container run --rm --name test5 -d -p 80:8080 <user_name>/dockertestimage
+~~~
+
+Then load your intance public Ip on the web browser, 
 
 
 ## Conclusion
@@ -141,7 +152,7 @@ Now we can pull this image for creating docker container!
 This is how an docker custom image is created and pushed to docker hub. Please contact me when you encounter any difficulty error while using this terrform code. Thank you and have a great day!
 
 
-### ⚙️ Connect with Me
+ ### ⚙️ Connect with Me
 <p align="center">
-<a href="https://www.instagram.com/dev_anand__/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/></a>
-<a href="https://www.linkedin.com/in/dev-anand-477898201/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+<a href="https://www.linkedin.com/in/radin-lawrence-8b3270102/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+<a href="mailto:radin.lawrence@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
