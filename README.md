@@ -144,7 +144,7 @@ Now we can pull this image for creating docker container!
 ![image](https://user-images.githubusercontent.com/100775027/165770922-1a5c633a-640d-4409-a6e8-e97658b63bbc.png)
 
 
-**To check: **
+**To check:**
 
 Launch a container from your newly created image
 
