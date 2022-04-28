@@ -31,6 +31,7 @@ Copy the conf file
 ~~~sh
 docker container cp webserver:/usr/local/apache2/conf/httpd.conf .
 ~~~
+![image](https://user-images.githubusercontent.com/100775027/165770280-d8e942e1-5060-43f6-883d-a477fdb90f48.png)
 
 Then, we can stop & remove the container as well as the docker image
 ~~~sh
@@ -47,6 +48,7 @@ Here I'm changing the port of httpd from default 80 to 8080
 vim httpd.conf 
 # Listen 80 to Listen 8080
 ~~~
+![image](https://user-images.githubusercontent.com/100775027/165772060-d4ba2763-b9c9-49bb-818a-8a745e9ce812.png)
 
 
 ## 2. Adding sample template to instance
@@ -101,6 +103,7 @@ Let's build the image,
 ~~~sh
 docker image build -t dockerimage:1 .
 ~~~
+![image](https://user-images.githubusercontent.com/100775027/165771492-110fe504-4fa2-4c76-a254-a758e32d740d.png)
 
 
 
@@ -112,6 +115,7 @@ Now, let's add this custom docker image to our docker hub. First we need to sign
 docker login
 ~~~
 Enter your credentials and you will get a login succeeded message/result once done
+![image](https://user-images.githubusercontent.com/100775027/165770530-868332c8-1acf-4a7a-973d-42ce24a9f6c8.png)
 
 
 
@@ -125,6 +129,7 @@ docker image tag dockerimage:1 <user_name>/dockertestimage:latest
 
 > Note: please use your docker hub username on here <user_name>
 
+![image](https://user-images.githubusercontent.com/100775027/165770711-cc96e581-21fc-489f-bf26-768ffd82025d.png)
 
 
 Now, we can push the image to docker hub
@@ -136,6 +141,9 @@ docker image push <user_name>/dockertestimage:latest
 
 Now we can pull this image for creating docker container!
 
+![image](https://user-images.githubusercontent.com/100775027/165770922-1a5c633a-640d-4409-a6e8-e97658b63bbc.png)
+
+
 **To check: **
 
 Launch a container from your newly created image
@@ -144,7 +152,8 @@ Launch a container from your newly created image
 docker container run --rm --name test5 -d -p 80:8080 <user_name>/dockertestimage
 ~~~
 
-Then load your intance public Ip on the web browser, 
+Then load your instance public Ip on the web browser, 
+![image](https://user-images.githubusercontent.com/100775027/165771072-636758ad-035b-4f9a-8cbe-0b48cc2ae977.png)
 
 
 ## Conclusion
