@@ -153,6 +153,8 @@ docker container run --rm --name test5 -d -p 80:8080 <user_name>/dockertestimage
 ~~~
 
 Then load your instance public Ip on the web browser, 
+
+
 ![image](https://user-images.githubusercontent.com/100775027/165771072-636758ad-035b-4f9a-8cbe-0b48cc2ae977.png)
 
 
