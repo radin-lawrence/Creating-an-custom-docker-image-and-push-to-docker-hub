@@ -53,7 +53,7 @@ vim httpd.conf
 
 ## 2. Adding sample template to instance
 
-Here I'm using HTML template for EC2 instance, you can use this link for getting [sample HTMl templates](https://www.tooplate.com/) . 
+Here I'm using HTML template for EC2 instance, you can use this link for getting [sample HTML templates](https://www.tooplate.com/) . 
 Downloaded the template to /home/ec2-user/website/ location.
 
 ~~~sh
